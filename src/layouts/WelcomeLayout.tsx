@@ -1,6 +1,14 @@
-import { useLocation, useOutlet } from "react-router-dom";
+import { Link, useLocation, useOutlet } from "react-router-dom";
 import { useTransition, animated } from "@react-spring/web";
 import { ReactNode, useRef } from "react";
+import logo from "../assets/images/logo.svg";
+
+const pageMap: Record<string, string> = {
+  "/welcome/1": "/welcome/2",
+  "/welcome/2": "/welcome/3",
+  "/welcome/3": "/welcome/4",
+  "/welcome/4": "/welcome/xxxx",
+};
 
 const WelcomeLayout = () => {
   const location = useLocation();
@@ -19,13 +27,27 @@ const WelcomeLayout = () => {
     config: { duration: 300 },
   });
 
-  return transitions((style, pathname) => {
-    return (
-      <animated.div key={pathname} style={style}>
-        <div style={{ textAlign: "center" }}>{map.current[pathname]}</div>
-      </animated.div>
-    );
-  });
+  return (
+    <>
+      <header>
+        <img src={logo} alt="mangosteen logo" />
+        <h1>山竹记账</h1>
+      </header>
+      <main>
+        {transitions((style, pathname) => {
+          return (
+            <animated.div key={pathname} style={style}>
+              {map.current[pathname]}
+            </animated.div>
+          );
+        })}
+      </main>
+      <footer>
+        <Link to={pageMap[location.pathname]}>下一页</Link>
+        <Link to="/welcome/xxx">跳过</Link>
+      </footer>
+    </>
+  );
 };
 
 export default WelcomeLayout;
