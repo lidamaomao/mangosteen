@@ -1,6 +1,7 @@
-import * as React from "react";
+import type { AttributifyAttributes } from "@unocss";
+
 declare module "react" {
-  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+  interface HTMLAttributes<T> extends AttributifyAttributes {
     flex?: boolean;
     relative?: boolean;
     text?: string;
@@ -8,5 +9,6 @@ declare module "react" {
     before?: string;
     after?: string;
     shadow?: boolean;
+    bg?: string;
   }
 }

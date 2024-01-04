@@ -4,7 +4,6 @@ import {
   presetIcons,
   presetTypography,
   presetUno,
-  transformerAttributifyJsx,
 } from "unocss";
 
 export default defineConfig({
@@ -19,5 +18,4 @@ export default defineConfig({
     }),
     presetTypography(),
   ],
-  transformers: [transformerAttributifyJsx()],
 });

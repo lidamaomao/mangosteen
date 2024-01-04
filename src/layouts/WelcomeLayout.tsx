@@ -3,7 +3,7 @@ import { useTransition, animated } from "@react-spring/web";
 import { ReactNode, useRef } from "react";
 import logo from "../assets/images/logo.svg";
 
-const pageMap: Record<string, string> = {
+const linkMap: Record<string, string> = {
   "/welcome/1": "/welcome/2",
   "/welcome/2": "/welcome/3",
   "/welcome/3": "/welcome/4",
@@ -28,12 +28,21 @@ const WelcomeLayout = () => {
   });
 
   return (
-    <>
-      <header>
-        <img src={logo} alt="mangosteen logo" />
-        <h1>山竹记账</h1>
+    <div className="bg-#5f34bf h-screen flex flex-col items-stretch pb-16px">
+      <header className="shrink-0 text-center pt-64px">
+        <img src={logo} className="w-4rem" />
+        <h1 className="text-#D4D4EE text-2rem">山竹记账</h1>
       </header>
-      <main>
+      <main
+        className="shrink-1
+        grow-1
+        bg-white
+        m-16px
+        rounded-8px
+        flex
+        justify-center
+        items-center"
+      >
         {transitions((style, pathname) => {
           return (
             <animated.div key={pathname} style={style}>
@@ -42,11 +51,18 @@ const WelcomeLayout = () => {
           );
         })}
       </main>
-      <footer>
-        <Link to={pageMap[location.pathname]}>下一页</Link>
-        <Link to="/welcome/xxx">跳过</Link>
+      <footer className="shrink-0 text-center text-24px text-white grid grid-cols-3 grid-rows-1">
+        <Link
+          style={{ gridArea: "1 / 2 / 2 / 3" }}
+          to={linkMap[location.pathname]}
+        >
+          下一页
+        </Link>
+        <Link style={{ gridArea: "1 / 3 / 2 / 4" }} to="/welcome/xxx">
+          跳过
+        </Link>
       </footer>
-    </>
+    </div>
   );
 };
 
