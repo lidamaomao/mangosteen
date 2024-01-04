@@ -1,7 +1,4 @@
-import { Outlet } from 'react-router-dom';
-
-const MainLayout = () => {
-  return <Outlet />;
-};
-
-export default MainLayout;
+import { Outlet } from 'react-router-dom'
+export const MainLayout: React.FC = () => {
+  return <div><Outlet /></div>
+}

@@ -1,16 +1,12 @@
-import welcome1Icon from "../assets/images/welcome1.svg";
-
-const Welcome1 = () => {
+import p from '../assets/images/welcome1.svg'
+export const Welcome1: React.FC = () => {
   return (
-    <div>
-      <img src={welcome1Icon} alt="pig icon" />
-      <p>
-        会挣钱
-        <br />
+    <div text-center>
+      <img w-128px h-130px src={p} />
+      <h2 text-32px mt-48px >
+        会挣钱 <br/>
         还要会省钱
-      </p>
+      </h2>
     </div>
-  );
-};
-
-export default Welcome1;
+  )
+}

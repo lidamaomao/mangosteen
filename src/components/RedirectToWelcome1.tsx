@@ -1,11 +1,10 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-export function RedirectToWelcome1() {
-  const navigate = useNavigate();
+export const RedirectToWelcome1: React.FC = () => {
+  const nav = useNavigate()
   useEffect(() => {
-    navigate('/welcome/1', { replace: true });
-  }, [navigate]);
-
-  return null;
+    nav('/welcome/1')
+  }, [])
+  return null
 }
